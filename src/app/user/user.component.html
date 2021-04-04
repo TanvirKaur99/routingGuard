@@ -1,0 +1,77 @@
+<mat-card>
+<mat-toolbar>Login</mat-toolbar><br>
+<form #userform="ngForm" (ngSubmit)="adduser(userform)">
+<mat-form-field>
+  <input type="text"
+  matInput
+  placeholder="Username"
+  ngModel
+  name="username"
+  [(ngModel)]="model.username"
+  #username="ngModel">
+</mat-form-field>
+
+<br>
+<mat-form-field>
+  <input type="email"
+  matInput
+  placeholder="Email"
+  ngModel
+  name="email"
+  [(ngModel)]="model.email"
+  #email="ngModel">
+</mat-form-field>
+
+<br>
+<mat-form-field>
+  <input type="text"
+  matInput
+  placeholder="Location"
+  ngModel
+  name="location"
+  [(ngModel)]="model.location"
+  #location="ngModel">
+</mat-form-field>
+
+<br>
+<mat-form-field>
+  <input type="text"
+  matInput
+  placeholder="Profile"
+  ngModel
+  name="profile"
+  [(ngModel)]="model.profile"
+  #profile="ngModel">
+</mat-form-field>
+<br>
+<button type="submit" mat-raised-button color="primary">Submit</button>
+
+</form>
+</mat-card>
+
+<br><br>
+<mat-card>
+<mat-toolbar>List of users</mat-toolbar>
+<br><br>
+<table class="table table-stripped">
+  <tr>
+    <th>Sr.no</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Location</th>
+    <th>Profile</th>
+    <th>Actions</th>
+</tr>
+
+<tr *ngFor=" let data of users; let i=index">
+<td>{{i+1}}</td>
+<td>{{data.username}}</td>
+<td>{{data.email}}</td>
+<td>{{data.location}}</td>
+<td>{{data.profile}}</td>
+<td><mat-icon (click)="onEdit(i)">edit</mat-icon>edit</td>
+<td><mat-icon (click)="onDelete(i)">delete</mat-icon>delete</td>
+
+</tr>
+</table>
+</mat-card>
